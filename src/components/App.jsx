@@ -1,20 +1,23 @@
-import ContactForm from './ContactForm/ContactForm';
-import ContactList from './ContactList/ContactList';
-import Filter from './Filter/Filter';
-import { AppWrapper, LogoIcon } from './App.styled';
+import React, { Suspense } from 'react';
+import MainNav from './MainNav/MainNav';
+import MainTitle from './MainTitle/MainTitle';
+import { Wrapper } from './App.styled';
+import { Outlet } from 'react-router-dom';
+import Loader from './Loader/Loader';
 
-export const App = () => {
+const App = () => {
   return (
-    <AppWrapper>
-      <h1>
-        <LogoIcon />
-        Phonebook
-      </h1>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
-      <ContactList />
-    </AppWrapper>
+    <>
+      <Wrapper>
+        <MainTitle />
+        <MainNav />
+      </Wrapper>
+      <Wrapper>
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      </Wrapper>
+    </>
   );
 };
 
