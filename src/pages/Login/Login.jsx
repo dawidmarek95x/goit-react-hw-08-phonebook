@@ -12,6 +12,7 @@ const Login = () => {
             <input 
               type="email" 
               name="email"
+              autoComplete="email"
               required
             />
           </label>
@@ -22,6 +23,7 @@ const Login = () => {
             <input 
               type="password" 
               name="password"
+              autoComplete="current-password"
               required
             />
           </label>

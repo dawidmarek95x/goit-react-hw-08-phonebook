@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ThreeDots } from 'react-loader-spinner';
 
 const Loader = ({ align = 'center', children }) => {
@@ -11,7 +12,7 @@ const Loader = ({ align = 'center', children }) => {
         color="#C14242"
         ariaLabel="three-dots-loading"
         wrapperStyle={{
-          display: 'flex',
+          display: "flex",
           justifyContent: align,
         }}
         visible={true}
@@ -20,6 +21,11 @@ const Loader = ({ align = 'center', children }) => {
       </ThreeDots>
     </div>
   );
+};
+
+Loader.propTypes = {
+  align: PropTypes.oneOf(["left", "center", "right", "start", "end"]),
+  children: PropTypes.element,
 };
 
 export default Loader;

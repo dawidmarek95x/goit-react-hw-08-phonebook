@@ -33,6 +33,7 @@ const Registration = () => {
               type="email" 
               name="email"
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              autoComplete="email"
               required
             />
           </label>
@@ -45,6 +46,7 @@ const Registration = () => {
               name="password"
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
               title="Must contain at least one uppercase and lowercase letter, one number and at least 8 or more characters"
+              autoComplete="new-password"
               required
             />
           </label>
@@ -54,9 +56,10 @@ const Registration = () => {
             Confirm password
             <input 
               type="password" 
-              name="password"
+              name="passwordConfirm"
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
               title="Must contain at least one uppercase and lowercase letter, one number and at least 8 or more characters"
+              autoComplete="new-password-confirm"
               required
             />
           </label>
