@@ -15,7 +15,7 @@ const Home = () => {
     In these and other situations, the solution may be the Phonebook, which is an application for storing your contacts and redirecting you to call them.
     </p>
     <p>
-    <ForwardingLink to="/register">Sign up</ForwardingLink> and try it out for yourself!
+     <ForwardingLink to="/register">Sign up</ForwardingLink> or <ForwardingLink to="/login">log in</ForwardingLink> to get started!
     </p>
   </Section>
   );
