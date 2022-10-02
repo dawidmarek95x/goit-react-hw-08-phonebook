@@ -19,9 +19,11 @@ export const Header = styled.header`
 export const StyledLink = styled(NavLink)`
   display: block;
   padding: 7px;
+  border: none;
   border-radius: 7px;
   text-align: center;
   text-decoration: none;
+  text-transform: uppercase;
   color: white;
   background: linear-gradient(to bottom, #3c3b3f, #605c3c);
 

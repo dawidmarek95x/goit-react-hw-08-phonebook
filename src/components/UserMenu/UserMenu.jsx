@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { deleteToken } from 'redux/slices/tokenSlice';
 import { useLogoutMutation } from 'services/phonebookApi';
 import { Header, StyledLink } from './UserMenu.styled';
@@ -10,11 +10,13 @@ function UserMenu() {
   const token = useSelector((state) => state.token);
   const [logout] = useLogoutMutation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const logoutHandler = async () => {
     await Cookies.remove('token');
     await logout()
     .then(() => dispatch(deleteToken()));
+    await navigate('/login');
   };
 
   return (
@@ -43,7 +45,7 @@ function UserMenu() {
           )}
           {token && (
             <li>
-              <StyledLink as={Link} to="/" onClick={logoutHandler}>
+              <StyledLink as="button" onClick={logoutHandler}>
                 Log out
               </StyledLink>
             </li>
