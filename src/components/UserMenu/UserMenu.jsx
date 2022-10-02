@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { deleteToken } from 'redux/slices/tokenSlice';
 import { useLogoutMutation } from 'services/phonebookApi';
 import { Header, StyledLink } from './UserMenu.styled';
