@@ -13,6 +13,7 @@ export const ContactList = () => {
     isError,
     error,
   } = useGetContactsQuery();
+
   const filter = useSelector(state => state.filter);
 
   let filteredContacts = useMemo(() => {
@@ -34,7 +35,7 @@ export const ContactList = () => {
                 key={c.id}
                 id={c.id}
                 name={c.name}
-                phone={c.phone}
+                number={c.number}
               />
             ))}
           </List>

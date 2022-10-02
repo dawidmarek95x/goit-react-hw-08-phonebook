@@ -8,15 +8,15 @@ import {
   Wrapper,
 } from './ContactElement.styled';
 
-export const ContactElement = ({ id, name, phone }) => {
+export const ContactElement = ({ id, name, number }) => {
   const [deleteContact] = useDeleteContactMutation();
 
   return (
     <Item>
       <Wrapper>
         <ContactName>{name}:</ContactName>
-        <span>{phone}</span>
-        <TelBtn as="a" href={`tel:${phone}`}>
+        <span>{number}</span>
+        <TelBtn as="a" href={`tel:${number}`}>
           {' '}
         </TelBtn>
         <Button
@@ -31,7 +31,7 @@ export const ContactElement = ({ id, name, phone }) => {
 ContactElement.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  phone: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  number: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 
 export default ContactElement;

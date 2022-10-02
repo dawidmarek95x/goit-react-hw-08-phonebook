@@ -1,20 +1,18 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { deleteToken } from 'redux/slices/tokenSlice';
 import { useLogoutMutation } from 'services/phonebookApi';
-import { Header, Link } from './MainNav.styled';
+import { Header, StyledLink } from './MainNav.styled';
 
 function MainNav() {
   const token = useSelector(state => state.token);
   const [logout] = useLogoutMutation();
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const logoutHandler = () => {
-    logout();
-    navigate('/');
-    dispatch(deleteToken());
+    logout()
+      .then(() => dispatch(deleteToken()));
   };
 
   return (
@@ -22,30 +20,30 @@ function MainNav() {
       <nav>
         <ul>
           <li>
-            <Link to="/" end>
+            <StyledLink to="/" end>
               Home
-            </Link>
+            </StyledLink>
           </li>
           {token && (
             <li>
-              <Link to="/contacts">Contacts</Link>
+              <StyledLink to="/contacts">Contacts</StyledLink>
             </li>
           )}
           {!token && (
             <li>
-              <Link to="/register">Sign up</Link>
+              <StyledLink to="/register">Sign up</StyledLink>
             </li>
           )}
           {!token && (
             <li>
-              <Link to="/login">Login</Link>
+              <StyledLink to="/login">Login</StyledLink>
             </li>
           )}
           {token && (
             <li>
-              <Link to="/logout" onClick={logoutHandler}>
+              <StyledLink as={Link} to="/" onClick={logoutHandler}>
                 Log out
-              </Link>
+              </StyledLink>
             </li>
           )}
         </ul>

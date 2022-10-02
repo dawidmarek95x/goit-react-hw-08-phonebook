@@ -25,7 +25,6 @@ const Loader = ({ align = 'center', children }) => {
 
 Loader.propTypes = {
   align: PropTypes.oneOf(["left", "center", "right", "start", "end"]),
-  children: PropTypes.element,
 };
 
 export default Loader;

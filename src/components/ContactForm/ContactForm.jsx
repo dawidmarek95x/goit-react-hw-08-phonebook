@@ -1,5 +1,4 @@
 import { Button, Form, Input, Label } from './ContactForm.styled';
-import { nanoid } from '@reduxjs/toolkit';
 import { useAddContactMutation, useGetContactsQuery } from 'services/phonebookApi';
 
 const ContactForm = () => {
@@ -12,25 +11,24 @@ const ContactForm = () => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
-    const phone = form.phone.value;
+    const number = form.number.value;
 
     if (contacts.some(c => c.name === name)) {
       return alert(`${name} is already in contacts`);
     }
 
-    if (contacts.some(c => c.phone === phone)) {
-      const [contactWithPhone] = contacts.filter(c => c.phone === phone);
+    if (contacts.some(c => c.number === number)) {
+      const [contactWithPhone] = contacts.filter(c => c.number === number);
 
       return alert(
-        `Number ${contactWithPhone.phone} is already in phonebook. It belongs to ${contactWithPhone.name}.`
+        `Number ${contactWithPhone.number} is already in phonebook. It belongs to ${contactWithPhone.name}.`
       );
     }
 
     try {
       await addContact({
-        id: nanoid(),
         name,
-        phone,
+        number,
       });
     } catch (error) {
       alert(`Failed to save contact ${name} in Phonebook!`);
@@ -55,7 +53,7 @@ const ContactForm = () => {
         Number
         <Input
           type="tel"
-          name="phone"
+          name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required

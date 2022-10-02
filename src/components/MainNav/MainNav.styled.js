@@ -16,7 +16,7 @@ export const Header = styled.header`
   }
 `;
 
-export const Link = styled(NavLink)`
+export const StyledLink = styled(NavLink)`
   display: block;
   padding: 7px;
   border-radius: 7px;
