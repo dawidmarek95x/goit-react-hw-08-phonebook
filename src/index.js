@@ -7,10 +7,10 @@ import App from 'components/App';
 import NotFound from 'pages/NotFound/NotFound';
 import 'modern-normalize';
 import './index.scss';
-import PublicRoute from 'components/PublicRoute/PublicRoute';
 
 const Home = React.lazy(() => import("./pages/Home/Home"));
 const PrivateRoute = React.lazy(() => import("./components/PrivateRoute/PrivateRoute"));
+const PublicRoute = React.lazy(() => import("./components/PublicRoute/PublicRoute"));
 const Contacts = React.lazy(() => import("./pages/Contacts/Contacts"));
 const Registration = React.lazy(() => import("./pages/Registration/Registration"));
 const Login = React.lazy(() => import("./pages/Login/Login"));
