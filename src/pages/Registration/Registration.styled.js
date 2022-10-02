@@ -57,14 +57,14 @@ export const RegistrationForm = styled.div`
     color: black;
     background-color: rgb(255, 255, 255);
     box-shadow: 0px 0px 2px 0px rgba(227, 152, 22, 0.7);
-    transition: color 1200ms, border-color 1200ms, background-color 1200ms, box-shadow 1200ms;
+    transition: color 600ms, border-color 600ms, background-color 600ms, box-shadow 600ms;
 
     &:hover {
       color: white;
       border-color: rgba(138, 63, 50, 0.8);
       background-color: rgba(138, 63, 50, 0.8);
       box-shadow: 0px 0px 4px 0px rgba(138, 63, 50, 0.8);
-      transition: color 600ms, border-color 600ms, background-color 600ms, box-shadow 600ms;
+      transition: color 400ms, border-color 400ms, background-color 400ms, box-shadow 400ms;
     }
   }
 `;

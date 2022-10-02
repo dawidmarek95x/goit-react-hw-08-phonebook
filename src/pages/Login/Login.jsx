@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -7,25 +8,28 @@ import { LoginForm } from './Login.styled';
 
 const Login = () => {
   const [login] = useLoginMutation();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const dispatch = useDispatch();
-  const submitHandler = evt => {
-    const form = evt.target;
+  const submitHandler = async e => {
+    const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
 
     const credentials = { email, password };
-    evt.preventDefault();
-    login(credentials)
+    e.preventDefault();
+    await login(credentials)
       .unwrap()
-      .then(data => dispatch(addToken(data)))
-      .then(() => navigate('/contacts'))
+      .then(({token}) => Cookies.set('token', token))
       .catch(() => {
         alert('The given data is incorrect. Check your email and password.');
       });
 
-    evt.target.reset();
+    const token = await Cookies.get('token');
+    console.log(token);
+    await dispatch(addToken(token));
+    await navigate('/contacts');
+    form.reset();
   };
 
   return (

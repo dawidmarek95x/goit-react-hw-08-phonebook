@@ -1,7 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { ForwardingLink, Section } from './Home.styled';
 
 const Home = () => {
+  const token = useSelector(state => state.token);
+
   return (
   <Section>
     <h3>Welcome to Phonebook!</h3>
@@ -14,9 +17,9 @@ const Home = () => {
     <p>
     In these and other situations, the solution may be the Phonebook, which is an application for storing your contacts and redirecting you to call them.
     </p>
-    <p>
+    {!token && <p>
      <ForwardingLink to="/register">Sign up</ForwardingLink> or <ForwardingLink to="/login">log in</ForwardingLink> to get started!
-    </p>
+    </p>}
   </Section>
   );
 };

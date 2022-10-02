@@ -1,8 +1,8 @@
 import React, { Suspense } from 'react';
-import MainNav from './MainNav/MainNav';
-import MainTitle from './MainTitle/MainTitle';
-import { Wrapper } from './App.styled';
 import { Outlet } from 'react-router-dom';
+import { Wrapper } from './App.styled';
+import MainTitle from './MainTitle/MainTitle';
+import UserMenu from './UserMenu/UserMenu';
 import Loader from './Loader/Loader';
 
 const App = () => {
@@ -10,7 +10,7 @@ const App = () => {
     <>
       <Wrapper>
         <MainTitle />
-        <MainNav />
+        <UserMenu />
       </Wrapper>
       <Wrapper>
         <Suspense fallback={<Loader />}>

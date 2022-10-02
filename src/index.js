@@ -4,14 +4,16 @@ import { Provider } from 'react-redux';
 import { store } from 'redux/store';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from 'components/App';
-import Contacts from 'pages/Contacts/Contacts';
+import NotFound from 'pages/NotFound/NotFound';
 import 'modern-normalize';
 import './index.scss';
-import Home from 'pages/Home/Home';
-import Registration from 'pages/Registration/Registration';
-import Login from 'pages/Login/Login';
-import NotFound from 'pages/NotFound/NotFound';
-import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
+import PublicRoute from 'components/PublicRoute/PublicRoute';
+
+const Home = React.lazy(() => import("./pages/Home/Home"));
+const PrivateRoute = React.lazy(() => import("./components/PrivateRoute/PrivateRoute"));
+const Contacts = React.lazy(() => import("./pages/Contacts/Contacts"));
+const Registration = React.lazy(() => import("./pages/Registration/Registration"));
+const Login = React.lazy(() => import("./pages/Login/Login"));
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -23,8 +25,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route element={<PrivateRoute />}>
               <Route path="contacts" element={<Contacts />}/>
             </Route>
-            <Route path="register" element={<Registration />} />
-            <Route path="login" element={<Login />} />
+            <Route element={<PublicRoute />}>
+              <Route path="register" element={<Registration />} />
+              <Route path="login" element={<Login />} />
+            </Route>
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

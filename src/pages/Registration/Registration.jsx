@@ -1,19 +1,20 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useSignupMutation } from 'services/phonebookApi';
 import { RegistrationForm } from './Registration.styled';
 import 'react-toastify/dist/ReactToastify.css';
 import { warningNotify } from 'utils/Notifications/Notifications';
+import Cookies from 'js-cookie';
+import { useDispatch } from 'react-redux';
 import { addToken } from 'redux/slices/tokenSlice';
 
 const Registration = () => {
   const [signup] = useSignupMutation();
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const submitHandler = evt => {
-    const form = evt.target;
+  const submitHandler = async e => {
+    const form = e.target;
     const firstName = form.firstName.value;
     const lastName = form.lastName.value;
     const name = `${firstName} ${lastName}`;
@@ -26,14 +27,17 @@ const Registration = () => {
     }
 
     const credentials = { name, email, password };
-    evt.preventDefault();
-    signup(credentials)
+    e.preventDefault();
+    await signup(credentials)
       .unwrap()
-      .then(data => dispatch(addToken(data)))
-      .then(() => navigate('/contacts'))
+      .then(({token}) => Cookies.set('token', token))
       .catch(() => {
         alert('User with this email address already exists');
       });
+
+    const token = await Cookies.get('token');
+    await dispatch(addToken(token));
+    await navigate('/contacts');      
     form.reset();
   };
 

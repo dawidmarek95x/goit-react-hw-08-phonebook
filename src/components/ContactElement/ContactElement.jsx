@@ -19,10 +19,7 @@ export const ContactElement = ({ id, name, number }) => {
         <TelBtn as="a" href={`tel:${number}`}>
           {' '}
         </TelBtn>
-        <Button
-          type="button"
-          onClick={() => deleteContact(id)}
-        ></Button>
+        <Button type="button" onClick={() => deleteContact(id)}></Button>
       </Wrapper>
     </Item>
   );

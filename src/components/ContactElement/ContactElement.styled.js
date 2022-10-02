@@ -25,8 +25,8 @@ export const ContactName = styled.span`
 `;
 
 export const Button = styled.button`
-  min-width: 18px;
-  min-height: 18px;
+  min-width: 20px;
+  min-height: 20px;
   margin-left: 5px;
   border: 1px solid rgb(49, 49, 49);
   border-radius: 50%;
@@ -34,7 +34,7 @@ export const Button = styled.button`
   background-image: url(${crossIcon});
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 8px;
+  background-size: 10px;
   transition: background-color 200ms;
 
   &:hover {
@@ -46,7 +46,7 @@ export const Button = styled.button`
 export const TelBtn = styled(Button)`
   margin-left: auto;
   background-image: url(${phoneIcon});
-  background-size: 10px;
+  background-size: 12px;
 
   &:hover {
     background-color: rgb(119, 245, 108);

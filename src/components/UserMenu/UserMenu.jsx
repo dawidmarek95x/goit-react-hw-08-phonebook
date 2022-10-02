@@ -1,18 +1,20 @@
+import Cookies from 'js-cookie';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { deleteToken } from 'redux/slices/tokenSlice';
 import { useLogoutMutation } from 'services/phonebookApi';
-import { Header, StyledLink } from './MainNav.styled';
+import { Header, StyledLink } from './UserMenu.styled';
 
-function MainNav() {
-  const token = useSelector(state => state.token);
+function UserMenu() {
+  const token = useSelector((state) => state.token);
   const [logout] = useLogoutMutation();
   const dispatch = useDispatch();
 
-  const logoutHandler = () => {
-    logout()
-      .then(() => dispatch(deleteToken()));
+  const logoutHandler = async () => {
+    await Cookies.remove('token');
+    await logout()
+    .then(() => dispatch(deleteToken()));
   };
 
   return (
@@ -52,4 +54,4 @@ function MainNav() {
   );
 }
 
-export default MainNav;
+export default UserMenu;
