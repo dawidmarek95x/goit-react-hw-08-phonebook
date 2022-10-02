@@ -1,7 +1,7 @@
 # Phonebook App
 
 ## Project info
-Application for storing contacts in the phone book with the possibility of redirection to the number of a selected contact.
+Application for storing contacts in the phone book assigned to the user's account and redirecting to the number of the selected user contact.
 
 **Project link:** [Phonebook App](https://myphonebook-dm.netlify.app/)
 
