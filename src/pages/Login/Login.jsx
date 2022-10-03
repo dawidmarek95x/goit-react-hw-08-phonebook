@@ -26,7 +26,6 @@ const Login = () => {
       });
 
     const token = await Cookies.get('token');
-    console.log(token);
     await dispatch(addToken(token));
     await navigate('/contacts');
     form.reset();
