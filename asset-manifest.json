@@ -1,30 +1,30 @@
 {
   "files": {
     "main.css": "/static/css/main.2b5ad46a.css",
-    "main.js": "/static/js/main.75b52e17.js",
+    "main.js": "/static/js/main.efe0280a.js",
     "static/js/304.e5b813d9.chunk.js": "/static/js/304.e5b813d9.chunk.js",
     "static/js/128.49d70b24.chunk.js": "/static/js/128.49d70b24.chunk.js",
     "static/js/765.c42cc822.chunk.js": "/static/js/765.c42cc822.chunk.js",
     "static/js/390.41623805.chunk.js": "/static/js/390.41623805.chunk.js",
     "static/js/515.b9d61124.chunk.js": "/static/js/515.b9d61124.chunk.js",
-    "static/js/639.d78d8478.chunk.js": "/static/js/639.d78d8478.chunk.js",
+    "static/js/639.01ac12bf.chunk.js": "/static/js/639.01ac12bf.chunk.js",
     "static/css/544.fb68114e.chunk.css": "/static/css/544.fb68114e.chunk.css",
     "static/media/cross.svg": "/static/media/cross.d5ab96da0d54fcdcdcde3e1f38b2c478.svg",
     "index.html": "/index.html",
     "static/media/address-book.svg": "/static/media/address-book.440464a8f2c2eab05ade28ee1a3a5e8e.svg",
     "static/media/phone.svg": "/static/media/phone.9553808c2045790e30e550f74b5bed2b.svg",
     "main.2b5ad46a.css.map": "/static/css/main.2b5ad46a.css.map",
-    "main.75b52e17.js.map": "/static/js/main.75b52e17.js.map",
+    "main.efe0280a.js.map": "/static/js/main.efe0280a.js.map",
     "304.e5b813d9.chunk.js.map": "/static/js/304.e5b813d9.chunk.js.map",
     "128.49d70b24.chunk.js.map": "/static/js/128.49d70b24.chunk.js.map",
     "765.c42cc822.chunk.js.map": "/static/js/765.c42cc822.chunk.js.map",
     "390.41623805.chunk.js.map": "/static/js/390.41623805.chunk.js.map",
     "515.b9d61124.chunk.js.map": "/static/js/515.b9d61124.chunk.js.map",
-    "639.d78d8478.chunk.js.map": "/static/js/639.d78d8478.chunk.js.map",
+    "639.01ac12bf.chunk.js.map": "/static/js/639.01ac12bf.chunk.js.map",
     "544.fb68114e.chunk.css.map": "/static/css/544.fb68114e.chunk.css.map"
   },
   "entrypoints": [
     "static/css/main.2b5ad46a.css",
-    "static/js/main.75b52e17.js"
+    "static/js/main.efe0280a.js"
   ]
 }
