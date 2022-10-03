@@ -14,6 +14,7 @@ const Registration = () => {
   const navigate = useNavigate();
 
   const submitHandler = async e => {
+    e.preventDefault();
     const form = e.target;
     const firstName = form.firstName.value;
     const lastName = form.lastName.value;
@@ -27,17 +28,20 @@ const Registration = () => {
     }
 
     const credentials = { name, email, password };
-    e.preventDefault();
     await signup(credentials)
       .unwrap()
-      .then(({token}) => Cookies.set('token', token))
+      .then(({ token }) => Cookies.set('token', token))
       .catch(() => {
         alert('User with this email address already exists');
       });
 
     const token = await Cookies.get('token');
+    if (token === undefined) {
+      return;
+    }
+
     await dispatch(addToken(token));
-    await navigate('/contacts');      
+    await navigate('/contacts');
     form.reset();
   };
 

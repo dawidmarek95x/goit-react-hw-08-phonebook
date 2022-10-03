@@ -12,20 +12,24 @@ const Login = () => {
   const navigate = useNavigate();
 
   const submitHandler = async e => {
+    e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
 
     const credentials = { email, password };
-    e.preventDefault();
     await login(credentials)
       .unwrap()
-      .then(({token}) => Cookies.set('token', token))
+      .then(({ token }) => Cookies.set('token', token))
       .catch(() => {
         alert('The given data is incorrect. Check your email and password.');
       });
 
     const token = await Cookies.get('token');
+    if (token === undefined) {
+      return;
+    }
+
     await dispatch(addToken(token));
     await navigate('/contacts');
     form.reset();
