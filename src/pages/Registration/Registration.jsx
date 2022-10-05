@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSignupMutation } from 'services/phonebookApi';
 import { RegistrationForm } from './Registration.styled';
-import 'react-toastify/dist/ReactToastify.css';
 import { warningNotify } from 'utils/Notifications/Notifications';
 import Cookies from 'js-cookie';
 import { useDispatch } from 'react-redux';
@@ -25,7 +24,7 @@ const Registration = () => {
     const passwordConfirm = form.passwordConfirm.value;
 
     if (password !== passwordConfirm) {
-      return warningNotify('Password and confirmation do not match!');
+      return warningNotify('Password and password confirmation do not match!');
     }
 
     const credentials = { name, email, password };

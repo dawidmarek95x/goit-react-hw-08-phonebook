@@ -29,9 +29,7 @@ const Login = () => {
         }
       })
       .catch(() => {
-        alert(
-          'The given data is incorrect. Check your email and password.'
-        );
+        warningNotify('The given data is incorrect. Check your email and password.');
       });
 
     const token = await Cookies.get('token');
