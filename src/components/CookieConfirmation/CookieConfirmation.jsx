@@ -4,22 +4,22 @@ const CookieConfirmation = () => {
   return (
     <>
       <CookieConsent
-      location="bottom"
+        location="bottom"
         cookieName="cookies"
-        style={{ background: '#000'}}
+        style={{ background: '#000' }}
         buttonText="Confirm"
         buttonStyle={{
           border: '2px solid #000',
           borderRadius: '10px',
           outline: 'none',
-          background: "#e0af5b",
+          background: '#e0af5b',
           padding: '5px',
           color: '#000',
-          boxShadow: "0px 0px 3px 0px rgba(255, 255, 255, 0.7)",
+          boxShadow: '0px 0px 3px 0px rgba(255, 255, 255, 0.7)',
         }}
         expires={365}
       >
-        <p>We use cookies to improve the user's browsing experience.</p>
+        We use cookies to improve the user's browsing experience.
       </CookieConsent>
     </>
   );
