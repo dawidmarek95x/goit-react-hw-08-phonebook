@@ -1,12 +1,12 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useSignupMutation } from 'services/phonebookApi';
-import { RegistrationForm } from './Registration.styled';
-import { warningNotify } from 'utils/Notifications/Notifications';
-import Cookies from 'js-cookie';
 import { useDispatch } from 'react-redux';
-import { addToken } from 'redux/slices/tokenSlice';
+import { useNavigate } from 'react-router-dom';
+import { warningNotify } from 'utils/notifications';
+import Cookies from 'js-cookie';
 import { addUser } from 'redux/slices/userSlice';
+import { addToken } from 'redux/slices/tokenSlice';
+import { RegistrationForm } from './Registration.styled';
 
 const Registration = () => {
   const [signup] = useSignupMutation();

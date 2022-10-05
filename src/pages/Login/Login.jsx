@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { addToken } from 'redux/slices/tokenSlice';
 import { addUser } from 'redux/slices/userSlice';
 import { useLoginMutation } from 'services/phonebookApi';
-import { warningNotify } from 'utils/Notifications/Notifications';
+import { warningNotify } from 'utils/notifications';
 import { LoginForm } from './Login.styled';
 
 const Login = () => {
