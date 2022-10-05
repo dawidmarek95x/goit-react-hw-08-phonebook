@@ -19,8 +19,8 @@ const App = () => {
           <Outlet />
         </Suspense>
       </Wrapper>
+      <ToastContainer />
       <CookieConfirmation />
-      <ToastContainer autoClose={3000} />
     </>
   );
 };

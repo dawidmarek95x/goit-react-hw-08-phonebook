@@ -29,7 +29,7 @@ const Login = () => {
         }
       })
       .catch(() => {
-        warningNotify(
+        alert(
           'The given data is incorrect. Check your email and password.'
         );
       });
