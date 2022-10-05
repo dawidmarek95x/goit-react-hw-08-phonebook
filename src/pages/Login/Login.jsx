@@ -3,7 +3,9 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addToken } from 'redux/slices/tokenSlice';
+import { addUser } from 'redux/slices/userSlice';
 import { useLoginMutation } from 'services/phonebookApi';
+import { warningNotify } from 'utils/Notifications/Notifications';
 import { LoginForm } from './Login.styled';
 
 const Login = () => {
@@ -20,9 +22,16 @@ const Login = () => {
     const credentials = { email, password };
     await login(credentials)
       .unwrap()
-      .then(({ token }) => Cookies.set('token', token))
+      .then(({ token, user: { email, name } }) => {
+        Cookies.set('token', token);
+        if (token) {
+          dispatch(addUser({ email, name }));
+        }
+      })
       .catch(() => {
-        alert('The given data is incorrect. Check your email and password.');
+        warningNotify(
+          'The given data is incorrect. Check your email and password.'
+        );
       });
 
     const token = await Cookies.get('token');
@@ -36,29 +45,31 @@ const Login = () => {
   };
 
   return (
-    <LoginForm>
-      <h2>Login</h2>
-      <form onSubmit={submitHandler}>
-        <div>
-          <label>
-            E-mail
-            <input type="email" name="email" autoComplete="email" required />
-          </label>
-        </div>
-        <div>
-          <label>
-            Password
-            <input
-              type="password"
-              name="password"
-              autoComplete="current-password"
-              required
-            />
-          </label>
-        </div>
-        <button type="submit">Log in</button>
-      </form>
-    </LoginForm>
+    <>
+      <LoginForm>
+        <h2>Login</h2>
+        <form onSubmit={submitHandler}>
+          <div>
+            <label>
+              E-mail
+              <input type="email" name="email" autoComplete="email" required />
+            </label>
+          </div>
+          <div>
+            <label>
+              Password
+              <input
+                type="password"
+                name="password"
+                autoComplete="current-password"
+                required
+              />
+            </label>
+          </div>
+          <button type="submit">Log in</button>
+        </form>
+      </LoginForm>
+    </>
   );
 };
 

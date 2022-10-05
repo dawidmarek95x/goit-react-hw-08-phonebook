@@ -2,21 +2,25 @@ import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Wrapper } from './App.styled';
 import MainTitle from './MainTitle/MainTitle';
-import UserMenu from './UserMenu/UserMenu';
 import Loader from './Loader/Loader';
+import MainNav from './MainNav/MainNav';
+import { ToastContainer } from 'react-toastify';
+import CookieConfirmation from './CookieConfirmation/CookieConfirmation';
 
 const App = () => {
   return (
     <>
       <Wrapper>
         <MainTitle />
-        <UserMenu />
+        <MainNav />
       </Wrapper>
       <Wrapper>
         <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </Wrapper>
+      <CookieConfirmation />
+      <ToastContainer autoClose={3000} />
     </>
   );
 };

@@ -7,6 +7,7 @@ import { warningNotify } from 'utils/Notifications/Notifications';
 import Cookies from 'js-cookie';
 import { useDispatch } from 'react-redux';
 import { addToken } from 'redux/slices/tokenSlice';
+import { addUser } from 'redux/slices/userSlice';
 
 const Registration = () => {
   const [signup] = useSignupMutation();
@@ -24,15 +25,20 @@ const Registration = () => {
     const passwordConfirm = form.passwordConfirm.value;
 
     if (password !== passwordConfirm) {
-      return warningNotify('Password and password confirm are not the same!');
+      return warningNotify('Password and confirmation do not match!');
     }
 
     const credentials = { name, email, password };
     await signup(credentials)
       .unwrap()
-      .then(({ token }) => Cookies.set('token', token))
+      .then(({ token, user: { email, name } }) => {
+        Cookies.set('token', token);
+        if (token) {
+          dispatch(addUser({ email, name }));
+        }
+      })
       .catch(() => {
-        alert('User with this email address already exists');
+        warningNotify('User with this email address already exists!');
       });
 
     const token = await Cookies.get('token');
@@ -46,62 +52,64 @@ const Registration = () => {
   };
 
   return (
-    <RegistrationForm>
-      <h2>Registration</h2>
-      <form onSubmit={submitHandler}>
-        <div>
-          <label>
-            First name
-            <input type="text" name="firstName" required />
-          </label>
-        </div>
-        <div>
-          <label>
-            Last name
-            <input type="text" name="lastName" required />
-          </label>
-        </div>
-        <div>
-          <label>
-            E-mail
-            <input
-              type="email"
-              name="email"
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-              autoComplete="email"
-              required
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Password
-            <input
-              type="password"
-              name="password"
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-              title="Must contain at least one uppercase and lowercase letter, one number and at least 8 or more characters"
-              autoComplete="new-password"
-              required
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Confirm password
-            <input
-              type="password"
-              name="passwordConfirm"
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-              title="Must contain at least one uppercase and lowercase letter, one number and at least 8 or more characters"
-              autoComplete="new-password-confirm"
-              required
-            />
-          </label>
-        </div>
-        <button type="submit">Sign up</button>
-      </form>
-    </RegistrationForm>
+    <>
+      <RegistrationForm>
+        <h2>Registration</h2>
+        <form onSubmit={submitHandler}>
+          <div>
+            <label>
+              First name
+              <input type="text" name="firstName" required />
+            </label>
+          </div>
+          <div>
+            <label>
+              Last name
+              <input type="text" name="lastName" required />
+            </label>
+          </div>
+          <div>
+            <label>
+              E-mail
+              <input
+                type="email"
+                name="email"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                autoComplete="email"
+                required
+              />
+            </label>
+          </div>
+          <div>
+            <label>
+              Password
+              <input
+                type="password"
+                name="password"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one uppercase and lowercase letter, one number and at least 8 or more characters"
+                autoComplete="new-password"
+                required
+              />
+            </label>
+          </div>
+          <div>
+            <label>
+              Confirm password
+              <input
+                type="password"
+                name="passwordConfirm"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one uppercase and lowercase letter, one number and at least 8 or more characters"
+                autoComplete="new-password-confirm"
+                required
+              />
+            </label>
+          </div>
+          <button type="submit">Sign up</button>
+        </form>
+      </RegistrationForm>
+    </>
   );
 };
 

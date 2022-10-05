@@ -4,14 +4,25 @@ import styled from "styled-components";
 export const Header = styled.header`
   & ul {
     display: flex;
+    justify-content: center;
     padding: 0;
-    text-transform: uppercase;
     list-style-type: none;
   }
 
-  & li {
+  & li { 
     &:not(:last-child) {
       margin-right: 10px;
+    }
+  }
+  
+  & p {
+    padding: 5px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    text-align: center;
+
+    & span {
+      font-weight: 700;
     }
   }
 `;
